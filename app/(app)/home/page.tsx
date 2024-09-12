@@ -28,10 +28,11 @@ function Home() {
 
     useEffect(() => {
         fetchVideos()
-    }, [fetchVideos])
+    }, [fetchVideos,])
 
-    const handleDownload = useCallback((url: string, title: string) => {
+   const handleDownload = useCallback((url: string, title: string) => {
         () => {
+          // console.log(url, title)
             const link = document.createElement("a");
             link.href = url;
             link.setAttribute("download", `${title}.mp4`);
