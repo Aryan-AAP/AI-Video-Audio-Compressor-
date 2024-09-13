@@ -19,7 +19,7 @@ const socialFormats = {
     const [isUploading, setIsUploading] = useState(false);
     const [isTransforming, setIsTransforming] = useState(false);
     const imageRef = useRef<HTMLImageElement>(null);
-
+const [removeBackground, setRemoveBackground] = useState(false);
 
     useEffect(() => {
         if(uploadedImage){
@@ -70,10 +70,11 @@ const socialFormats = {
             link.click();
             document.body.removeChild(link);
             window.URL.revokeObjectURL(url);
-            document.body.removeChild(link);
+            // document.body.removeChild(link);
         })
     }
 
+    
 
     return (
         <div className="container mx-auto p-4 max-w-4xl">
@@ -138,7 +139,10 @@ const socialFormats = {
                         aspectRatio={socialFormats[selectedFormat].aspectRatio}
                         gravity='auto'
                         ref={imageRef}
+                        className="w-full h-full object-cover"
+removeBackground={removeBackground}
                         onLoad={() => setIsTransforming(false)}
+                        
                         />
                     </div>
                   </div>
